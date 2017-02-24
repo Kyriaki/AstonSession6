@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Post</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ post.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ post.title }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ post.summary }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ post.content }}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{ post.author }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                {% if post.getExtension %}
+                <td><img src="{{ asset('uploads/pictures/' ~ post.getImage)}}"/></td>
+                {% else %}
+                <td><i>No image was found for this post</i></td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('post_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+    {{ form_start(comment_form) }}
+        <input type="submit" value="Submit">
+    {{ form_end(comment_form) }}
+
+    <p> Comments: </p>
+
+    {% for comment in comments %}
+        {% if comment.post.id == post.id %}
+            <p><b>{{ comment.user }}</b> <i style="font-size: 0.65em;">({{comment.date|date}})</i> : {{ comment.comment }} </p>
+
+            {{ form_start(delete_comment) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_comment) }}
+
+        {% endif %}
+    {% endfor %}
+
+        
+{% endblock %}

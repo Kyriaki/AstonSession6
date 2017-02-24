@@ -1,0 +1,24 @@
+friend_index:
+    path:     /
+    defaults: { _controller: "introCrudBundle:Friend:index" }
+    methods:  GET
+
+friend_show:
+    path:     /{id}/show
+    defaults: { _controller: "introCrudBundle:Friend:show" }
+    methods:  GET
+
+friend_new:
+    path:     /new
+    defaults: { _controller: "introCrudBundle:Friend:new" }
+    methods:  [GET, POST]
+
+friend_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "introCrudBundle:Friend:edit" }
+    methods:  [GET, POST]
+
+friend_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "introCrudBundle:Friend:delete" }
+    methods:  DELETE

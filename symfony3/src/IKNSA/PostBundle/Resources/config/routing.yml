@@ -1,0 +1,12 @@
+iknsa_post_post:
+    resource: "@IKNSAPostBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+ajax_get:
+    path:     /api/post
+    defaults: { _controller: "IKNSAPostBundle:Post:ajax"}
+    methods:  [GET, POST]
+
+iknsa_post_homepage:
+    path:     /postindex
+    defaults: { _controller: IKNSAPostBundle:Default:index }

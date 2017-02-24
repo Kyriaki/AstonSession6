@@ -1,0 +1,11 @@
+IKNSA\BlogBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: IKNSA\BlogBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }

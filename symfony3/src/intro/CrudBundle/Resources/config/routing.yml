@@ -1,0 +1,7 @@
+intro_crud_friend:
+    resource: "@introCrudBundle/Resources/config/routing/friend.yml"
+    prefix:   /friend
+
+intro_crud_homepage:
+    path:     /
+    defaults: { _controller: introCrudBundle:Default:index }

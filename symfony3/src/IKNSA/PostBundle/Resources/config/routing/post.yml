@@ -1,0 +1,29 @@
+post_index:
+    path:     /
+    defaults: { _controller: "IKNSAPostBundle:Post:index" }
+    methods:  GET
+
+post_show:
+    path:     /{id}/show
+    defaults: { _controller: "IKNSAPostBundle:Post:show" }
+    methods:  [GET, POST]
+
+post_new:
+    path:     /new
+    defaults: { _controller: "IKNSAPostBundle:Post:new" }
+    methods:  [GET, POST]
+
+post_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "IKNSAPostBundle:Post:edit" }
+    methods:  [GET, POST]
+
+post_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "IKNSAPostBundle:Post:delete" }
+    methods:  DELETE
+
+comment_delete:
+    path:     /{post_id}/deleteComment/{id}
+    defaults: { _controller: "IKNSAPostBundle:Post:deleteComment"}
+    methods:  DELETE

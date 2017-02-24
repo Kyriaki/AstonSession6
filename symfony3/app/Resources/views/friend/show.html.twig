@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Friend</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ friend.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ friend.name }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ friend.email }}</td>
+            </tr>
+	    <tr>
+		<th>Tel</th>
+		<td>{{ friend.tel }}</td>
+	    </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('friend_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('friend_edit', { 'id': friend.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

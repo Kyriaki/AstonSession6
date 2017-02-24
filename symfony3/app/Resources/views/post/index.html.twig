@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Posts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Summary</th>
+                <th>Content</th>
+                <th>Author</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td><a href="{{ path('post_show', { 'id': post.id }) }}">{{ post.id }}</a></td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.summary }}</td>
+                <td>{{ post.content }}</td>
+                <td>{{ post.author }}</td>
+                <td><img src="{{ asset('uploads/pictures/' ~ post.getImage)}}"/></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('post_show', { 'id': post.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('post_edit', { 'id': post.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('post_new') }}">Create a new post</a>
+        </li>
+    </ul>
+
+    {% for flash in app.session.flashBag.get('notice') %}
+        <div id="notice" class="notice alert alert-notice">
+            {{ flash }}
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
