@@ -43,11 +43,6 @@
         <li>
             <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
         </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
     </ul>
 
     {{ form_start(comment_form) }}
@@ -59,10 +54,6 @@
     {% for comment in comments %}
         {% if comment.post.id == post.id %}
             <p><b>{{ comment.user }}</b> <i style="font-size: 0.65em;">({{comment.date|date}})</i> : {{ comment.comment }} </p>
-
-            {{ form_start(delete_comment) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_comment) }}
 
         {% endif %}
     {% endfor %}
